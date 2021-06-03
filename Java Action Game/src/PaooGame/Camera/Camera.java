@@ -1,51 +1,51 @@
 package PaooGame.Camera;
 
-import PaooGame.Entities.Player;
-import PaooGame.Game;
-import PaooGame.TileMap.TileMap;
+import PaooGame.Items.Hero;
+import PaooGame.RefLinks;
 import PaooGame.Tiles.Tile;
 
-import javax.naming.TimeLimitExceededException;
+/*! \class public class Camera
+    \brief Clasa Camera este folosita pentru a urmari personajul principal pe intreaga harta, chiar daca
+           aceasta depaseste dimenstiunea ecranului.
+    */
 
 public class Camera {
-    private Game game;
-    private int xOffset;
-    private TileMap tileMap;
+    private RefLinks refLink;
+    private float xOffset;
 
-    public Camera(Game game,int xOffset)
+    /*! \fn Camera
+    \brief Constructorul clasei Camera
+    \param refLink contine referinte catre obiectele Game, Map
+    */
+
+    public Camera(RefLinks refLink)
     {
-        this.game = game;
-        this.xOffset = xOffset;
+        this.refLink = refLink;
+        xOffset = 0;
     }
 
-    public void Center(Player p)
+    /*! \fn Center
+    \brief Functia Center este folosita pentru a centra personajul pe ecran in functie de pozitia lui actuala pe harta
+
+    */
+
+    public void Center(Hero hero)
     {
-        xOffset = p.x - game.getWidth() / 2;
+        xOffset = hero.GetX() - refLink.GetWidth() / 2;
         if(xOffset < 0)
         {
             xOffset = 0;
         }
-        if(xOffset > tileMap.GetWidth() * Tile.TILE_WIDTH - game.getWidth())
+        if(xOffset > refLink.GetMapWidth() * Tile.TILE_WIDTH - refLink.GetWidth())
         {
-            xOffset = tileMap.GetWidth() * Tile.TILE_WIDTH - game.getWidth();
+            xOffset = refLink.GetMapWidth() * Tile.TILE_WIDTH - refLink.GetWidth();
         }
 
     }
 
-    public int getxOffset()
+    public float getxOffset()
     {
         return xOffset;
     }
-
-    /*public void setxOffset(int xOffset)
-    {
-        this.xOffset = xOffset;
-    }*/
-
-    public void setTileMap(TileMap tileMap)
-    {
-        this.tileMap = tileMap;
-    }
-
-
 }
+

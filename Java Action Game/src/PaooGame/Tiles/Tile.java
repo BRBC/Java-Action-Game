@@ -13,13 +13,15 @@ public class Tile
 
         /// De remarcat ca urmatoarele dale sunt statice si publice. Acest lucru imi permite sa le am incarcate
         /// o singura data in memorie
+    public static Tile airTile          = new AirTile(0);
+    public static Tile grassTile        = new GrassTile(1);     /*!< Dala de tip iarba*/
+    public static Tile soilTile         = new SoilTile(2);      /*!< Dala de tip sol/pamant*/
+    //public static Tile mountainTile     = new MountainTile(1);  /*!< Dala de tip munte/piatra*/
+    //public static Tile waterTile        = new WaterTile(2);     /*!< Dala de tip apa*/
+    //public static Tile treeTile         = new TreeTile(3);      /*!< Dala de tip copac*/
 
-    public static Tile grassTile        = new GrassTile(2);
-    public static Tile dirtTile        = new DirtTile(1);
-    public static Tile airTile        = new AirTile(0);
-
-    public static final int TILE_WIDTH  = 64;                       /*!< Latimea unei dale.*/
-    public static final int TILE_HEIGHT = 64;                       /*!< Inaltimea unei dale.*/
+    public static final int TILE_WIDTH  = 48;                       /*!< Latimea unei dale.*/
+    public static final int TILE_HEIGHT = 48;                       /*!< Inaltimea unei dale.*/
 
     protected BufferedImage img;                                    /*!< Imaginea aferenta tipului de dala.*/
     protected final int id;                                         /*!< Id-ul unic aferent tipului de dala.*/
@@ -43,6 +45,7 @@ public class Tile
      */
     public void Update()
     {
+
     }
 
     /*! \fn public void Draw(Graphics g, int x, int y)
